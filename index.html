@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript Practice</title>
+  <style>
+    body {
+      display: flex;
+      /* flexは並べたい要素の親につける */
+      flex-wrap: wrap;
+      /* flex-wrap: フレックスアイテムを単一業に押し込むか、 
+                 あるいわ複数行に折り返しても良いかを指定;
+      nowrap/wrap/wrap-reverse:
+      単一行/複数行に分割/wrapと同様だが、cross-startとctoss-endが入れ替わる */
+    }
+    .box {
+      width: 100px;
+      height: 100px;
+      background-color: skyblue;
+      cursor: pointer;
+      transition: 0.8s;
+      /* transition:遷移　要素の２つの状態間の変化を定義 */
+      margin: 0px 8px 8px; 
+      text-align: center;
+      line-height: 100px;
+    }
+    .circle {
+      background: pink;
+      border-radius: 50%;
+      transform: rotate(360deg);
+      /* rotate:回転 */
+    }
+    .win {
+      background: pink;
+      border-radius: 50%;
+      transform: rotate(360deg);
+    }
+    .lose {
+      transform: scale(0.9);
+    }
+  </style>
+</head>
+<body>
+  
+
+  <script>
+    'use strict';
+
+    const num = 5;
+    const winner = Math.floor(Math.random() * num); // 0 - 4
+    // Math.random:0=< x <1のランダムな数字を生成
+    // Math.floor:小数点以下を切り捨て
+    for (let i = 0; i < num; i++) {
+      const div = document.createElement('div');
+      div.classList.add('box');
+      
+      div.addEventListener('click', () => {
+       if (i === winner){
+         div.textContent = 'Win!';
+         div.classList.add('win');
+       } else {
+        div.textContent = 'Lose!';
+         div.classList.add('lose');
+       }
+      });
+
+      document.body.appendChild(div);
+    }
+   
+    // const target1 = document.getElementById('target1');
+    
+    // // Id=targetを持った要素を文章全体から獲得　Event(なにか)が起きたらなんらかの処理をする
+    // ’click'＝Event  () =>{} アロー関数
+    // target1.addEventListener('click' , () => {
+    //     target1.classList.toggle('circle');
+    // });
+  </script>
+</body>
+</html>
